@@ -1,0 +1,57 @@
+# New packages for voice + PC control (install on top of your existing requirements)
+psutil>=5.9
+pyautogui>=0.9.54
+Pillow>=10.0              # needed by pyautogui for screenshots
+pyperclip>=1.8
+send2trash>=1.8           # deletes go to the Recycle Bin/Trash, never permanent
+requests>=2.31            # ElevenLabs calls
+
+# Optional extras
+screen-brightness-control>=0.20   # set_brightness (Windows/Linux)
+pycaw>=20240210; sys_platform == "win32"     # exact volume control on Windows
+comtypes>=1.2; sys_platform == "win32"
+# ==========================================================
+# SaileshGPT + Jarvis - full project requirements
+# Install:  pip install -r requirements.txt
+# Python 3.10+ recommended (3.11/3.12 best)
+# ==========================================================
+
+# ---- Web server (app.py) ----
+fastapi>=0.110
+uvicorn[standard]>=0.27      # the "unicorn" server: python app.py
+python-multipart>=0.0.9      # file upload + voice upload
+jinja2>=3.1                  # templates/index.html
+python-dotenv>=1.0           # .env loading
+certifi                      # SSL certificates
+requests>=2.31               # ElevenLabs + web calls
+
+# ---- Database (database.py) ----
+sqlalchemy>=2.0
+
+# ---- LangGraph agents (agent.py) ----
+langgraph>=0.2
+langgraph-checkpoint-sqlite>=2.0
+langchain-core>=0.3
+langchain-google-genai>=2.0  # Gemini models
+langchain-ollama>=0.2        # local Ollama models (Qwen etc.)
+
+# ---- Jarvis: voice + PC control (system_tools.py, jarvis_routes.py) ----
+psutil>=5.9
+pyautogui>=0.9.54
+Pillow>=10.0                 # screenshots
+pyperclip>=1.8
+send2trash>=1.8              # deletes go to Recycle Bin/Trash
+screen-brightness-control>=0.20   # optional: brightness (Windows/Linux)
+pycaw>=20240210; sys_platform == "win32"   # exact volume on Windows
+comtypes>=1.2; sys_platform == "win32"
+
+# ---- Tools and retrieval-augmented document search ----
+chromadb>=0.5                # chroma.sqlite3 = ChromaDB store
+langchain-chroma>=0.1
+langchain-community>=0.3
+langchain-text-splitters>=0.3
+pypdf>=4.0                   # PDF upload
+python-docx>=1.1             # DOCX upload
+beautifulsoup4>=4.12         # browser_read tool
+tavily-python>=0.3           # web search (TAVILY_API_KEY)
+# rag.py uses Google embeddings when GOOGLE_API_KEY is set, otherwise Ollama
